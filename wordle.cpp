@@ -32,6 +32,7 @@ std::set<std::string> wordle(const std::string &in, const std::string &floating,
 void wordle_helper(std::string in, std::string floating,
                    const std::set<std::string> &dict, int pos, int num_blnk,
                    int num_flt, std::set<std::string> &res) {
+    std::cout << in << " " << floating << " " << num_blnk << " " << num_flt << std::endl;
     if (in[pos] != '-')
         wordle_helper(in, floating, dict, pos + 1, num_blnk, num_flt, res);
     if (num_blnk == 0) {
