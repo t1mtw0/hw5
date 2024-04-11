@@ -79,6 +79,5 @@ bool schedule_helper(const AvailabilityMatrix &avail, const size_t dailyNeed,
             shiftsDone[i]--;
         }
     }
-    sched[n][d] = 0;
     return false;
 }
