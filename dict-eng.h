@@ -6,7 +6,7 @@
 #include <string>
 #endif
 
-//extern const std::set<std::string> dictWords; 
-const std::set<std::string>& readDictWords(std::string filename);
+// extern const std::set<std::string> dictWords;
+const std::set<std::string> &readDictWords(std::string filename);
 
 #endif

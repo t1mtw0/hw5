@@ -1,11 +1,11 @@
 #ifndef RECCHECK
-#include <set>
-#include <iostream>
+#include <algorithm>
 #include <fstream>
+#include <iostream>
+#include <map>
+#include <set>
 #include <string>
 #include <vector>
-#include <map>
-#include <algorithm>
 // add or remove necessary headers as you please
 
 #endif
@@ -14,32 +14,20 @@
 
 using namespace std;
 
-// a constant that can be used to indicate an INVALID 
+// a constant that can be used to indicate an INVALID
 // worker ID if that is useful to your implementation.
 // Feel free to not use or delete.
 static const Worker_T INVALID_ID = (unsigned int)-1;
 
-
 // Add prototypes for any helper functions here
-
 
 // Add your implementation of schedule() and other helper functions here
 
-bool schedule(
-    const AvailabilityMatrix& avail,
-    const size_t dailyNeed,
-    const size_t maxShifts,
-    DailySchedule& sched
-)
-{
-    if(avail.size() == 0U){
+bool schedule(const AvailabilityMatrix &avail, const size_t dailyNeed,
+              const size_t maxShifts, DailySchedule &sched) {
+    if (avail.size() == 0U) {
         return false;
     }
     sched.clear();
     // Add your code below
-
-
-
-
 }
-
