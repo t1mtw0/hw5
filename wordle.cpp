@@ -56,5 +56,4 @@ void wordle_helper(std::string in, std::string floating,
                           res);
         }
     }
-    in[pos] = '-';
 }
