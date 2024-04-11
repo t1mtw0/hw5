@@ -49,7 +49,7 @@ void wordle_helper(std::string in, std::string floating,
         wordle_helper(in, floating, dict, pos + 1, num_blnk - 1, res);
         num_flt++;
     }
-    if (num_blnk < num_flt) {
+    if (num_blnk > num_flt) {
         for (char c = 'a'; c < 'z'; ++c) {
             in[pos] = c;
             wordle_helper(in, floating, dict, pos + 1, num_blnk - 1, res);
