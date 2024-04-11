@@ -35,7 +35,7 @@ bool schedule(const AvailabilityMatrix &avail, const size_t dailyNeed,
     std::vector<int> shiftsDone((int)avail[0].size(), 0);
     std::vector<std::vector<int>> workedAlready(
         avail.size(), std::vector<int>(avail[0].size(), 0));
-    for (int i = 0; i < (int)avail[0].size(); ++i) {
+    for (int i = 0; i < (int)avail.size(); ++i) {
         std::vector<unsigned int> tmp;
         for (int j = 0; j < (int)dailyNeed; ++j) {
             tmp.push_back(0);
