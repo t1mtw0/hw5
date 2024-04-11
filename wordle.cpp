@@ -13,7 +13,7 @@
 // Add prototypes of helper functions here
 void wordle_helper(std::string in, std::string floating,
                    const std::set<std::string> &dict, int pos, int num_blnk,
-                   std::set<std::string> &res);
+                   int num_flt, std::set<std::string> &res);
 
 // Definition of primary wordle function
 std::set<std::string> wordle(const std::string &in, const std::string &floating,
@@ -30,11 +30,11 @@ std::set<std::string> wordle(const std::string &in, const std::string &floating,
 
 // Define any helper functions here
 void wordle_helper(std::string in, std::string floating,
-                   const std::set<std::string> &dict, int pos, int num_blnk, int num_flt,
-                   std::set<std::string> &res) {
+                   const std::set<std::string> &dict, int pos, int num_blnk,
+                   int num_flt, std::set<std::string> &res) {
     std::cout << in << " " << floating << " " << pos << " " << num_blnk << "\n";
     if (in[pos] != '-')
-        wordle_helper(in, floating, dict, pos + 1, num_blnk, res);
+        wordle_helper(in, floating, dict, pos + 1, num_blnk, num_flt, res);
     if (num_blnk == 0) {
         if (num_flt == 0 && dict.find(in) != dict.end())
             res.insert(in);
@@ -46,12 +46,14 @@ void wordle_helper(std::string in, std::string floating,
             continue;
         in[pos] = *it;
         *it = '-';
-        wordle_helper(in, floating, dict, pos + 1, num_blnk - 1, num_flt - 1, res);
+        wordle_helper(in, floating, dict, pos + 1, num_blnk - 1, num_flt - 1,
+                      res);
     }
     if (num_blnk > num_flt) {
         for (char c = 'a'; c < 'z'; ++c) {
             in[pos] = c;
-            wordle_helper(in, floating, dict, pos + 1, num_blnk - 1, num_flt, res);
+            wordle_helper(in, floating, dict, pos + 1, num_blnk - 1, num_flt,
+                          res);
         }
     }
     in[pos] = '-';
