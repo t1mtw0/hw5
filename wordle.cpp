@@ -35,7 +35,7 @@ void wordle_helper(std::string in, std::string floating,
     std::cout << in << " " << floating << " " << pos << " " << num_blnk << "\n";
     if (in[pos] != '-')
         wordle_helper(in, floating, dict, pos + 1, num_blnk, res);
-    if (pos == (int)in.size()) {
+    if (num_blnk == 0) {
         if (dict.find(in) != dict.end())
             res.insert(in);
         return;
