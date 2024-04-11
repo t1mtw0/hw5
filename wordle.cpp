@@ -47,6 +47,7 @@ void wordle_helper(std::string in, std::string floating,
         *it = '-';
         wordle_helper(in, floating, dict, pos + 1, num_blnk - 1, num_flt - 1,
                       res);
+        *it = in[pos];
     }
     if (num_blnk > num_flt) {
         for (char c = 'a'; c <= 'z'; ++c) {
