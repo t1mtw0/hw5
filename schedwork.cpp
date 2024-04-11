@@ -60,7 +60,7 @@ bool schedule_helper(const AvailabilityMatrix &avail, const size_t dailyNeed,
         std::cout << shiftsDone[i] << " ";
     }
     std::cout << std::endl;
-    // std::cout << n << " " << d << std::endl;
+    std::cout << n << " " << d << std::endl;
     if (n >= (int)avail.size())
         return true;
     int nN = n;
