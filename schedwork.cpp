@@ -37,16 +37,9 @@ bool schedule(const AvailabilityMatrix &avail, const size_t dailyNeed,
         avail.size(), std::vector<int>(avail[0].size(), 0));
     for (int i = 0; i < (int)avail.size(); ++i) {
         std::vector<unsigned int> tmp;
-        for (int j = 0; j < (int)dailyNeed; ++j) {
+        for (int j = 0; j < (int)dailyNeed; ++j)
             tmp.push_back(0);
-        }
         sched.push_back(tmp);
-    }
-    for (int i = 0; i < avail.size(); ++i) {
-        for (int j = 0; j < avail[0].size(); ++j) {
-            std::cout << avail[i][j] << " ";
-        }
-        std::cout << std::endl;
     }
     return schedule_helper(avail, dailyNeed, maxShifts, shiftsDone,
                            workedAlready, 0, 0, avail[0].size(), sched);
@@ -56,22 +49,11 @@ bool schedule_helper(const AvailabilityMatrix &avail, const size_t dailyNeed,
                      const size_t maxShifts, std::vector<int> &shiftsDone,
                      std::vector<std::vector<int>> &workedAlready, int n, int d,
                      int k, DailySchedule &sched) {
-    for (int i = 0; i < sched.size(); ++i) {
-        for (int j = 0; j < sched[0].size(); ++j) {
-            std::cout << sched[i][j] << " ";
-        }
-        std::cout << std::endl;
-    }
-    for (int i = 0; i < shiftsDone.size(); ++i) {
-        std::cout << shiftsDone[i] << " ";
-    }
-    std::cout << std::endl;
-    std::cout << n << " " << d << std::endl;
     if (n >= (int)avail.size())
         return true;
     int nN = n;
     int nD = d;
-    if (d + 1 == dailyNeed) {
+    if (d + 1 == (int)dailyNeed) {
         nN++;
         nD = 0;
     } else {
