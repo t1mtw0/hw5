@@ -42,6 +42,12 @@ bool schedule(const AvailabilityMatrix &avail, const size_t dailyNeed,
         }
         sched.push_back(tmp);
     }
+    for (int i = 0; i < avail.size(); ++i) {
+        for (int j = 0; j < avail[0].size(); ++j) {
+            std::cout << avail[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
     return schedule_helper(avail, dailyNeed, maxShifts, shiftsDone,
                            workedAlready, 0, 0, avail[0].size(), sched);
 }
