@@ -32,6 +32,7 @@ std::set<std::string> wordle(const std::string &in, const std::string &floating,
 void wordle_helper(std::string in, std::string floating,
                    const std::set<std::string> &dict, int pos, int num_blnk,
                    std::set<std::string> &res) {
+    std::cout << in << " " << floating << " " << pos << " " << num_blnk << " ";
     if (pos == (int)in.size()) {
         if (dict.find(in) != dict.end())
             res.insert(in);
