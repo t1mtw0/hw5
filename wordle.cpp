@@ -38,6 +38,7 @@ void wordle_helper(std::string in, std::string floating,
     if (pos == (int)in.size()) {
         if (dict.find(in) != dict.end())
             res.insert(in);
+        return;
     }
     int num_flt = 0;
     for (std::string::iterator it = floating.begin(); it != floating.end();
