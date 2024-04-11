@@ -24,36 +24,34 @@ std::set<std::string> wordle(const std::string &in, const std::string &floating,
         if (c == '-')
             num_blnk++;
     }
-    wordle_helper(in, floating, dict, 0, num_blnk, res);
+    wordle_helper(in, floating, dict, 0, num_blnk, floating.size(), res);
     return res;
 }
 
 // Define any helper functions here
 void wordle_helper(std::string in, std::string floating,
-                   const std::set<std::string> &dict, int pos, int num_blnk,
+                   const std::set<std::string> &dict, int pos, int num_blnk, int num_flt,
                    std::set<std::string> &res) {
     std::cout << in << " " << floating << " " << pos << " " << num_blnk << "\n";
     if (in[pos] != '-')
         wordle_helper(in, floating, dict, pos + 1, num_blnk, res);
     if (num_blnk == 0) {
-        if (dict.find(in) != dict.end())
+        if (num_flt == 0 && dict.find(in) != dict.end())
             res.insert(in);
         return;
     }
-    int num_flt = 0;
     for (std::string::iterator it = floating.begin(); it != floating.end();
          ++it) {
         if (*it == '-')
             continue;
         in[pos] = *it;
         *it = '-';
-        wordle_helper(in, floating, dict, pos + 1, num_blnk - 1, res);
-        num_flt++;
+        wordle_helper(in, floating, dict, pos + 1, num_blnk - 1, num_flt - 1, res);
     }
     if (num_blnk > num_flt) {
         for (char c = 'a'; c < 'z'; ++c) {
             in[pos] = c;
-            wordle_helper(in, floating, dict, pos + 1, num_blnk - 1, res);
+            wordle_helper(in, floating, dict, pos + 1, num_blnk - 1, num_flt, res);
         }
     }
     in[pos] = '-';
