@@ -56,6 +56,12 @@ bool schedule_helper(const AvailabilityMatrix &avail, const size_t dailyNeed,
                      const size_t maxShifts, std::vector<int> &shiftsDone,
                      std::vector<std::vector<int>> &workedAlready, int n, int d,
                      int k, DailySchedule &sched) {
+    for (int i = 0; i < sched.size(); ++i) {
+        for (int j = 0; j < sched[0].size(); ++j) {
+            std::cout << sched[i][j] << std::endl;
+        }
+        std::cout << std::endl;
+    }
     for (int i = 0; i < shiftsDone.size(); ++i) {
         std::cout << shiftsDone[i] << " ";
     }
